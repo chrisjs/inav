@@ -135,14 +135,15 @@
 #define UART6_RX_PIN            PC7
 #define UART6_TX_PIN            PC6
 
-#if defined(OMNIBUSF4V3)
-#define SERIAL_PORT_COUNT       4 //VCP, USART1, USART3, USART6
-#else
 #define USE_SOFTSERIAL1
+#define SERIAL_PORT_COUNT       5 //VCP, USART1, USART3, USART6, SOFTSERIAL1
+
+#if defined(OMNIBUSF4V3)        // RX is on PWM5 and TX on PWM6 - see inav issue 2960
+#define SOFTSERIAL_1_RX_PIN     PA1
+#define SOFTSERIAL_1_TX_PIN     PA8
+#else
 #define SOFTSERIAL_1_RX_PIN     PC8
 #define SOFTSERIAL_1_TX_PIN     PC9
-
-#define SERIAL_PORT_COUNT       5 //VCP, USART1, USART3, USART6, SOFTSERIAL1
 #endif
 
 #define USE_SPI
